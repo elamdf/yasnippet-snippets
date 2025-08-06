@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: meeting
 # key: <meet
-# expand-env: ((yas-after-exit-snippet-hook  #'my/rename-meeting-notes-file-maybe))
+# expand-env: ((yas-after-exit-snippet-hook  #'elamdf/rename-meeting-notes-file-maybe))
 # --
 
 
@@ -9,10 +9,9 @@
 #+DATE: `(format-time-string "%Y-%m-%d")`
 #+CATEGORY: Meeting
 #+TAGS: @meeting ${3}
-`(my/insert-org-participant-tags) `
+`(elamdf/insert-org-participant-tags) `
 
 `(let* ((file (completing-read "Select project: "
                 (directory-files-recursively "~/Documents/projects" "\\.org$")))
         (name (file-name-base file)))
    (format "#+PROJECT: [[file:%s][%s]]" file name))`
-
