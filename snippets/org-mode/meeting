@@ -4,12 +4,10 @@
 # expand-env: ((yas-after-exit-snippet-hook  #'elamdf/rename-meeting-notes-file-maybe))
 # --
 
-
-#+TITLE: $1
+`(progn (setq participants (string-trim (elamdf/insert-org-participant-tags))) nil)`#+TITLE: ${1:`(string-join (delq nil (mapcar (lambda (x) (capitalize (string-remove-prefix "@" (string-remove-suffix "_participant" x)))) (split-string participants " "))) ", ")` Meeting}
 #+DATE: `(format-time-string "%Y-%m-%d")`
 #+CATEGORY: Meeting
-#+TAGS: @meeting ${3}
-`(elamdf/insert-org-participant-tags) `
+#+TAGS: @meeting ${3} `(string-trim participants)`
 
 `(let* ((file (completing-read "Select project: "
                 (directory-files-recursively "~/Documents/projects" "\\.org$")))
