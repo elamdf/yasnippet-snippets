@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: org todo with id
+# key: todo
+# --
+* TODO ${1:task title}
+:PROPERTIES:
+:ID:       `(org-id-new)`
+:END:
+$0
